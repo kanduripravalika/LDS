@@ -1,0 +1,23 @@
+def find_pairs(array, sum):
+    pairs = []
+    total_set = set()
+
+    for num in array:
+        total = sum - num
+        if total in total_set:
+            pairs.append((num, total))
+        total_set.add(num)
+    return pairs
+arr = [2, 4, 5, 6, 3, 1, 7, 8, 9]
+sum = 13
+result = find_pairs(arr, sum)
+print("Pairs with sum", sum, ":")
+for pair in result:
+    print(pair)
+
+
+EXCEPTED OUTPUT:
+Pairs with sum 13 :
+(7, 6)
+(8, 5)
+(9, 4)
