@@ -1,0 +1,44 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+    def getMin(self):
+        if self.top is None:
+            return "Stack is empty"
+        else:
+            print("Minimum Element in the stack is: {}" .format(self.minimum))
+    def push(self, value):
+        if self.top is None:
+            self.top = Node(value)
+            self.minimum = value
+ 
+        elif value < self.minimum:
+            temp = (2 * value) - self.minimum
+            new_node = Node(temp)
+            new_node.next = self.top
+            self.top = new_node
+            self.minimum = value
+        else:
+            new_node = Node(value)
+            new_node.next = self.top
+            self.top = new_node
+        print("Number Inserted: {}" .format(value))
+if __name__ == '__main__':   
+  stack = Stack()
+  stack.push(3)
+  stack.push(5)
+  stack.push(9)
+  stack.push(8)
+  stack.push(2)
+  stack.push(1.5)
+  stack.getMin()     
+
+EXCEPTED OUTPUT:
+
+Number Inserted: 3
+Number Inserted: 5
+Number Inserted: 9
+Number Inserted: 8
+Number Inserted: 2
+Number Inserted: 1.5
+Minimum Element in the stack is: 1.5
