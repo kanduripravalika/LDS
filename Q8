@@ -1,0 +1,30 @@
+def check_brackets(code):
+    stack = []
+
+    for char in code:
+        if char in '({[':
+            stack.append(char)
+        elif char in ')}]':
+            if not stack or not is_matching_bracket(stack[-1], char):
+                return False
+            stack.pop()
+
+    return len(stack) == 0
+
+def is_matching_bracket(opening, closing):
+    if opening == '(' and closing == ')':
+        return True
+    if opening == '{' and closing == '}':
+        return True
+    if opening == '[' and closing == ']':
+        return True
+    return False
+
+code_snippet = "(a + b) * [c - {d / e}])"
+if check_brackets(code_snippet):
+    print("All brackets are closed properly.")
+else:
+    print("All brackets are  not closed properly.")
+
+EXCEPTED OUTPUT:
+All brackets are  not closed properly.
