@@ -1,0 +1,20 @@
+def postfix_to_prefix(expression):
+    stack = []
+
+    for char in expression:
+        if char.isalnum():
+            stack.append(char)
+        else:
+            operand2 = stack.pop()
+            operand1 = stack.pop()
+            prefix = char + operand1 + operand2
+            stack.append(prefix)
+
+    return stack[0]
+postfix_expr = "ab+c*a-b"
+prefix_expr = postfix_to_prefix(postfix_expr)
+print("Prefix expression:", prefix_expr)
+
+EXCEPTED OUTPUT:
+
+Prefix expression: -*+abca
